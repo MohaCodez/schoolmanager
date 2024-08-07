@@ -1,0 +1,13 @@
+.menu-container {
+    display: flex;
+    flex-direction: column;
+  }
+  a {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  a:hover {
+    background-color: #f1f1f1;
+  }
+  

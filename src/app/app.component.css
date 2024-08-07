@@ -1,0 +1,18 @@
+/* src/app/app.component.css */
+.grid-container {
+    display: grid;
+    grid-template-areas: 
+        'menu main main main main';
+    grid-template-columns: 200px 1fr; /* Adjust column sizes as needed */
+    height: 100vh; /* Optional: Makes the grid container full height */
+}
+
+.sidemenu {
+    grid-area: menu;
+    background-color: #f4f4f4; /* Optional: Adds background color to the menu area */
+}
+
+.content {
+    grid-area: main;
+    padding: 20px; /* Optional: Adds padding to the content area */
+}

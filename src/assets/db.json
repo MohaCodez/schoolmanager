@@ -1,0 +1,70 @@
+{
+  "students": [
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "branch": "ECE",
+      "age": 21
+    },
+    {
+      "id": 3,
+      "name": "Amit",
+      "age": 15,
+      "branch": "ECE"
+    },
+    {
+      "id": 4,
+      "name": "ZKZK",
+      "age": 88,
+      "branch": "acac"
+    },
+    {
+      "id": 5,
+      "name": "Manan",
+      "age": 24,
+      "branch": "CS"
+    },
+    {
+      "id": 6,
+      "name": "Brand New Name",
+      "age": 23,
+      "branch": "Physics"
+    }
+  ],
+  "professors": [
+    {
+      "id": 1,
+      "name": "Dr. John",
+      "department": "Math",
+      "email": "john.doe@gmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Smith",
+      "department": "Physics",
+      "email": "dwayne.smith@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "Abhijit Pethe",
+      "email": "pethe@bits.com",
+      "department": "ECE"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1,
+      "name": "Math 101",
+      "credits": 3,
+      "branch": "Math",
+      "description": "Basic mathematics course"
+    },
+    {
+      "id": 2,
+      "name": "Phy101",
+      "branch": "Physics",
+      "description": "Bad Course, Don't take it",
+      "credits": "3"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+<!-- src/app/courses/courses.component.html -->
+<h2>Courses</h2>
+
+<!-- PrimeNG Table -->
+<p-table [value]="courses">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Branch</th>
+          <th>Description</th>
+          <th>Credits</th>
+          <th>
+              <button pButton type="button" label="Add New" routerLink="/add-course"></button>
+          </th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-course>
+      <tr>
+          <td>{{course.id}}</td>
+          <td>{{course.name}}</td>
+          <td>{{course.branch}}</td>
+          <td>{{course.description}}</td>
+          <td>{{course.credits}}</td>
+          <td>
+              <button pButton type="button" label="Edit" (click)="editCourse(course)"></button>
+              <button pButton type="button" label="Delete" class="p-button-danger" (click)="deleteCourse(course.id)"></button>
+          </td>
+      </tr>
+  </ng-template>
+</p-table>

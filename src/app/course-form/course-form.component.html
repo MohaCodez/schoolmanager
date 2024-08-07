@@ -1,0 +1,21 @@
+<!-- src/app/course-form/course-form.component.html -->
+<h2>{{ isEdit ? 'Edit Course' : 'Add New Course' }}</h2>
+<form (ngSubmit)="onSubmit()" #courseForm="ngForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" required [(ngModel)]="course.name" name="name">
+  </div>
+  <div>
+    <label for="branch">Branch:</label>
+    <input type="text" id="branch" required [(ngModel)]="course.branch" name="branch">
+  </div>
+  <div>
+    <label for="description">Description:</label>
+    <input type="text" id="description" required [(ngModel)]="course.description" name="description">
+  </div>
+  <div>
+    <label for="credits">Credits:</label>
+    <input type="text" id="credits" required [(ngModel)]="course.credits" name="credits">
+  </div>
+  <button type="submit" pButton label="{{ isEdit ? 'Update' : 'Submit' }}"></button>
+</form>

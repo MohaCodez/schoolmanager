@@ -1,0 +1,17 @@
+<!-- src/app/professor-form/professor-form.component.html -->
+<h2>{{ isEdit ? 'Edit Professor' : 'Add New Professor' }}</h2>
+<form (ngSubmit)="onSubmit()" #professorForm="ngForm">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" required [(ngModel)]="professor.name" name="name">
+  </div>
+  <div>
+    <label for="branch">Branch:</label>
+    <input type="text" id="branch" required [(ngModel)]="professor.department" name="department">
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" required [(ngModel)]="professor.email" name="email">
+  </div>
+  <button type="submit" pButton label="{{ isEdit ? 'Update' : 'Submit' }}"></button>
+</form>
