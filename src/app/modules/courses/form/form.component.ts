@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Course } from '../courses/course';
-import { CourseService } from '../courses/course.service';
+import { Course } from '../table/course';
+import { CourseService } from '../table/course.service';
 
 @Component({
   selector: 'app-course-form',
-  templateUrl: './course-form.component.html',
-  styleUrls: ['./course-form.component.css']
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
 export class CourseFormComponent implements OnInit {
   course: Course = { id: 0, name: '', branch: '', description: '', credits:0 };

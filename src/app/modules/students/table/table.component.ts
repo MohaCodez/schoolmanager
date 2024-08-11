@@ -5,8 +5,8 @@ import { StudentService } from './student.service';
 
 @Component({
   selector: 'app-students',
-  templateUrl: './students.component.html',
-  styleUrls: ['./students.component.css']
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.css']
 })
 export class StudentsComponent implements OnInit {
   students: Student[] = [];

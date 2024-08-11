@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Student } from '../students/student';
-import { StudentService } from '../students/student.service';
+import { Student } from '../table/student';
+import { StudentService } from '../table/student.service';
 
 @Component({
   selector: 'app-student-form',
-  templateUrl: './student-form.component.html',
-  styleUrls: ['./student-form.component.css']
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
 export class StudentFormComponent implements OnInit {
   student: Student = { id: 0, name: '', age: 0, branch: '' };

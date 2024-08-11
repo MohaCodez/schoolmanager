@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Professor } from '../professors/professor';
-import { ProfessorService } from '../professors/professor.service';
+import { Professor } from '../table/professor';
+import { ProfessorService } from '../table/professor.service';
 
 @Component({
   selector: 'app-professor-form',
-  templateUrl: './professor-form.component.html',
-  styleUrls: ['./professor-form.component.css']
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
 export class ProfessorFormComponent implements OnInit {
   professor: Professor = { id: 0, name: '', email: '', department: '' };

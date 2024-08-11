@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { StudentsComponent } from './students/students.component';
-import { ProfessorsComponent } from './professors/professors.component';
-import { CoursesComponent } from './courses/courses.component';
-import { StudentFormComponent } from './student-form/student-form.component';
-import { ProfessorFormComponent } from './professor-form/professor-form.component';
-import { CourseFormComponent } from './course-form/course-form.component';
+import { StudentsComponent } from './modules/students/table/table.component';
+import { ProfessorsComponent } from './modules/professors/table/table.component';
+import { CoursesComponent } from './modules/courses/table/table.component';
+import { StudentFormComponent } from './modules/students/form/form.component';
+import { ProfessorFormComponent } from './modules/professors/form/form.component';
+import { CourseFormComponent } from './modules/courses/form/form.component';
 const routes: Routes = [
   { path: 'students', component: StudentsComponent },
   { path: 'professors', component: ProfessorsComponent },

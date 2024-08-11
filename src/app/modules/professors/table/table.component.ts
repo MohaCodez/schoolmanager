@@ -5,8 +5,8 @@ import { ProfessorService } from './professor.service';
 
 @Component({
   selector: 'app-professors',
-  templateUrl: './professors.component.html',
-  styleUrls: ['./professors.component.css']
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.css']
 })
 export class ProfessorsComponent implements OnInit {
   professors: Professor[] = [];

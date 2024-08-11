@@ -5,8 +5,8 @@ import { CourseService } from './course.service';
 
 @Component({
   selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css']
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.css']
 })
 export class CoursesComponent implements OnInit {
   courses: Course[] = [];
