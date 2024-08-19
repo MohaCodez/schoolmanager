@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Student } from '../table/student';
 import { StudentService } from '../table/student.service';
 
@@ -8,33 +7,40 @@ import { StudentService } from '../table/student.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class StudentFormComponent implements OnInit {
-  student: Student = { id: 0, name: '', age: 0, branch: '' };
-  isEdit: boolean = false;
+export class FormComponent implements OnInit {
+  @Input() student: Student = {
+    id: 0,
+    name: '',
+    branch: '',
+    age: 0
+  };
 
-  constructor(
-    private studentService: StudentService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  @Output() onClose = new EventEmitter<void>();
+
+  constructor(private courseService: StudentService) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.isEdit = true;
-      this.studentService.getStudent(+id).subscribe(student => this.student = student);
+    if (!this.student) {
+      this.student = {
+        id: 0,
+        name: '',
+        branch: '',
+        age: 0
+      };
     }
   }
 
   onSubmit(): void {
-    if (this.isEdit) {
-      this.studentService.updateStudent(this.student).subscribe(() => {
-        this.router.navigate(['/students']);
-      });
+    if (this.student.id) {
+      this.courseService.updateStudent(this.student)
+        .subscribe(() => {
+          this.onClose.emit();
+        });
     } else {
-      this.studentService.addStudent(this.student).subscribe(() => {
-        this.router.navigate(['/students']);
-      });
+      this.courseService.addStudent(this.student)
+        .subscribe(() => {
+          this.onClose.emit();
+        });
     }
   }
 }

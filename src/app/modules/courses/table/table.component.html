@@ -1,4 +1,3 @@
-<!-- src/app/courses/courses.component.html -->
 <h2>Courses</h2>
 
 <!-- PrimeNG Table -->
@@ -11,8 +10,8 @@
           <th>Description</th>
           <th>Credits</th>
           <th>
-              <button pButton type="button" label="Add New" routerLink="/add-course"></button>
-          </th>
+            <button pButton type="button" label="Add Course" icon="pi pi-plus" (click)="showAddDialog()"></button>
+        </th>
       </tr>
   </ng-template>
   <ng-template pTemplate="body" let-course>
@@ -29,3 +28,10 @@
       </tr>
   </ng-template>
 </p-table>
+
+<p-dialog header="Course Form" [(visible)]="displayDialog" [modal]="true" [breakpoints]="{'960px': '75vw', '640px': '100vw'}">
+    <ng-container *ngIf="selectedCourse">
+        <app-course-form [course]="selectedCourse" (onClose)="closeDialog()"></app-course-form>
+    </ng-container>
+</p-dialog>
+  

@@ -1,34 +1,16 @@
 {
   "students": [
     {
-      "id": 2,
-      "name": "Jane Smith",
-      "branch": "ECE",
-      "age": 21
-    },
-    {
-      "id": 3,
+      "id": 1,
       "name": "Amit",
-      "age": 15,
+      "age": 22,
       "branch": "ECE"
     },
     {
-      "id": 4,
-      "name": "ZKZK",
-      "age": 88,
-      "branch": "acac"
-    },
-    {
-      "id": 5,
-      "name": "Manan",
-      "age": 24,
-      "branch": "CS"
-    },
-    {
-      "id": 6,
-      "name": "Brand New Name",
-      "age": 23,
-      "branch": "Physics"
+      "id": 2,
+      "name": "Dave",
+      "age": 25,
+      "branch": "ECE"
     }
   ],
   "professors": [
@@ -49,6 +31,18 @@
       "name": "Abhijit Pethe",
       "email": "pethe@bits.com",
       "department": "ECE"
+    },
+    {
+      "id": 4,
+      "name": "Alakh Pandey",
+      "email": "alakh@pandey.com",
+      "department": "Physics"
+    },
+    {
+      "id": 5,
+      "name": "Newman",
+      "email": "newman@postman.com",
+      "department": "Post"
     }
   ],
   "courses": [
@@ -63,8 +57,15 @@
       "id": 2,
       "name": "Phy101",
       "branch": "Physics",
-      "description": "Bad Course, Don't take it",
+      "description": "Difficult Course, Don't take it",
       "credits": "3"
+    },
+    {
+      "id": 3,
+      "name": "MuE",
+      "branch": "ECE",
+      "description": "A crazy course about Mosfets and transistors",
+      "credits": 3
     }
   ]
 }

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Course } from '../table/course';
 import { CourseService } from '../table/course.service';
 
@@ -8,33 +7,42 @@ import { CourseService } from '../table/course.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class CourseFormComponent implements OnInit {
-  course: Course = { id: 0, name: '', branch: '', description: '', credits:0 };
-  isEdit: boolean = false;
+export class FormComponent implements OnInit {
+  @Input() course: Course = {
+    id: 0,
+    name: '',
+    branch: '',
+    description: '',
+    credits: 0
+  };
 
-  constructor(
-    private courseService: CourseService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  @Output() onClose = new EventEmitter<void>();
+
+  constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.isEdit = true;
-      this.courseService.getCourse(+id).subscribe(course => this.course = course);
+    if (!this.course) {
+      this.course = {
+        id: 0,
+        name: '',
+        branch: '',
+        description: '',
+        credits: 0
+      };
     }
   }
 
   onSubmit(): void {
-    if (this.isEdit) {
-      this.courseService.updateCourse(this.course).subscribe(() => {
-        this.router.navigate(['/courses']);
-      });
+    if (this.course.id) {
+      this.courseService.updateCourse(this.course)
+        .subscribe(() => {
+          this.onClose.emit();
+        });
     } else {
-      this.courseService.addCourse(this.course).subscribe(() => {
-        this.router.navigate(['/courses']);
-      });
+      this.courseService.addCourse(this.course)
+        .subscribe(() => {
+          this.onClose.emit();
+        });
     }
   }
 }

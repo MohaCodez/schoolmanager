@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { Professor } from '../table/professor';
 import { ProfessorService } from '../table/professor.service';
 
@@ -8,33 +7,42 @@ import { ProfessorService } from '../table/professor.service';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.css']
 })
-export class ProfessorFormComponent implements OnInit {
-  professor: Professor = { id: 0, name: '', email: '', department: '' };
-  isEdit: boolean = false;
+export class FormComponent implements OnInit {
+  @Input() professor: Professor = {
+    id: 0,
+    name: '',
+    email: '',
+    department: ''
+  };
 
-  constructor(
-    private professorService: ProfessorService,
-    private router: Router,
-    private route: ActivatedRoute
-  ) { }
+  @Output() onClose = new EventEmitter<void>();
+
+  constructor(private professorService: ProfessorService) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.isEdit = true;
-      this.professorService.getProfessor(+id).subscribe(professor => this.professor = professor);
+    if (!this.professor) {
+      this.professor = {
+        id: 0,
+        name: '',
+        email: '',
+        department: ''
+      };
     }
   }
 
   onSubmit(): void {
-    if (this.isEdit) {
-      this.professorService.updateProfessor(this.professor).subscribe(() => {
-        this.router.navigate(['/professors']);
-      });
+    if (this.professor.id) {
+      // Update existing professor
+      this.professorService.updateProfessor(this.professor)
+        .subscribe(() => {
+          this.onClose.emit();
+        });
     } else {
-      this.professorService.addProfessor(this.professor).subscribe(() => {
-        this.router.navigate(['/professors']);
-      });
+      // Add new professor
+      this.professorService.addProfessor(this.professor)
+        .subscribe(() => {
+          this.onClose.emit();
+        });
     }
   }
 }
