@@ -11,6 +11,12 @@
       "name": "Dave",
       "age": 25,
       "branch": "ECE"
+    },
+    {
+      "id": 3,
+      "name": "Manan",
+      "age": 14,
+      "branch": "CS"
     }
   ],
   "professors": [
@@ -66,6 +72,13 @@
       "branch": "ECE",
       "description": "A crazy course about Mosfets and transistors",
       "credits": 3
+    },
+    {
+      "id": 4,
+      "name": "ADVD",
+      "branch": "Electronics",
+      "description": "Analog Digital Verilog Design",
+      "credits": 5
     }
   ]
 }

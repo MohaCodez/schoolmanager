@@ -10,9 +10,9 @@ import { ProfessorService } from '../table/professor.service';
 export class FormComponent implements OnInit {
   @Input() professor: Professor = {
     id: 0,
-    name: '',
-    email: '',
-    department: ''
+    name: null,        // No default value
+    email: null,       // No default value
+    department: null   // No default value
   };
 
   @Output() onClose = new EventEmitter<void>();
@@ -20,25 +20,16 @@ export class FormComponent implements OnInit {
   constructor(private professorService: ProfessorService) {}
 
   ngOnInit(): void {
-    if (!this.professor) {
-      this.professor = {
-        id: 0,
-        name: '',
-        email: '',
-        department: ''
-      };
-    }
+    // No need to reset the object here as it's already set to null by default.
   }
 
   onSubmit(): void {
     if (this.professor.id) {
-      // Update existing professor
       this.professorService.updateProfessor(this.professor)
         .subscribe(() => {
           this.onClose.emit();
         });
     } else {
-      // Add new professor
       this.professorService.addProfessor(this.professor)
         .subscribe(() => {
           this.onClose.emit();

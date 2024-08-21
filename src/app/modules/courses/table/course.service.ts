@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Course } from '../table/course';
 
@@ -31,6 +31,11 @@ export class CourseService {
 
   /** POST: add a new course */
   addCourse(course: Course): Observable<Course> {
+    // Validate the course object to ensure no required fields are null
+    if (!course.name || !course.branch || !course.description || !course.credits) {
+      return throwError(() => new Error('Invalid course data: All fields are required'));
+    }
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -51,6 +56,11 @@ export class CourseService {
 
   /** PUT: update the course */
   updateCourse(course: Course): Observable<Course> {
+    // Validate the course object to ensure no required fields are null
+    if (!course.name || !course.branch || !course.description || !course.credits) {
+      return throwError(() => new Error('Invalid course data: All fields are required'));
+    }
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };

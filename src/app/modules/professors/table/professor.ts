@@ -1,6 +1,6 @@
-export interface Professor{
+export interface Professor {
     id: number;
-    name: string;
-    email: string;
-    department: string;
+    name: string | null;
+    email: string | null;
+    department: string | null;
 }

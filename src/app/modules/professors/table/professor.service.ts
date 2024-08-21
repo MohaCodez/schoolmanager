@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Professor } from '../table/professor';
 
@@ -31,9 +31,15 @@ export class ProfessorService {
 
   /** POST: add a new professor */
   addProfessor(professor: Professor): Observable<Professor> {
+    // Validate the professor object to ensure no required fields are null
+    if (!professor.name || !professor.email || !professor.department) {
+      return throwError(() => new Error('Invalid professor data: All fields are required'));  // Updated throwError usage
+    }
+
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
+
     return this.http.post<Professor>(this.apiUrl, professor, httpOptions)
       .pipe(
         catchError(this.handleError<Professor>('addProfessor'))

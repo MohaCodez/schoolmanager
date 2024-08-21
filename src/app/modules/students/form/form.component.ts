@@ -10,34 +10,27 @@ import { StudentService } from '../table/student.service';
 export class FormComponent implements OnInit {
   @Input() student: Student = {
     id: 0,
-    name: '',
-    branch: '',
-    age: 0
+    name: null,        // No default value
+    age: null,       // No default value
+    branch: null        // No default value
   };
 
   @Output() onClose = new EventEmitter<void>();
 
-  constructor(private courseService: StudentService) {}
+  constructor(private studentService: StudentService) {}
 
   ngOnInit(): void {
-    if (!this.student) {
-      this.student = {
-        id: 0,
-        name: '',
-        branch: '',
-        age: 0
-      };
-    }
+    // No need to reset the object here as it's already set to null by default.
   }
 
   onSubmit(): void {
     if (this.student.id) {
-      this.courseService.updateStudent(this.student)
+      this.studentService.updateStudent(this.student)
         .subscribe(() => {
           this.onClose.emit();
         });
     } else {
-      this.courseService.addStudent(this.student)
+      this.studentService.addStudent(this.student)
         .subscribe(() => {
           this.onClose.emit();
         });

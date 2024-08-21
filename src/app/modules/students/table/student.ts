@@ -1,6 +1,6 @@
 export interface Student {
     id: number;
-    name: string;
-    age: number;
-    branch: string;
+    name: string | null;
+    age: number | null;
+    branch: string | null;
 }

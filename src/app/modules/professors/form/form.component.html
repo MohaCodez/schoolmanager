@@ -1,20 +1,23 @@
 <form (ngSubmit)="onSubmit()" #professorForm="ngForm">
   <div class="p-fluid">
     <div class="p-field">
-      <label for="name">Name</label>
+      <label for="name">Professor Name</label>
       <input id="name" type="text" pInputText [(ngModel)]="professor.name" name="name" required>
+      <small *ngIf="professorForm.controls['name']?.invalid && professorForm.controls['name']?.touched" class="p-error">Name is required.</small>
     </div>
 
     <div class="p-field">
       <label for="email">Email</label>
       <input id="email" type="email" pInputText [(ngModel)]="professor.email" name="email" required>
+      <small *ngIf="professorForm.controls['email']?.invalid && professorForm.controls['email']?.touched" class="p-error">Email is required.</small>
     </div>
 
     <div class="p-field">
       <label for="department">Department</label>
       <input id="department" type="text" pInputText [(ngModel)]="professor.department" name="department" required>
+      <small *ngIf="professorForm.controls['department']?.invalid && professorForm.controls['department']?.touched" class="p-error">Department is required.</small>
     </div>
 
-    <button type="submit" pButton label="{{ professor.id ? 'Update' : 'Add' }}"></button>
+    <button type="submit" pButton label="{{ professor.id ? 'Update' : 'Add' }}" [disabled]="professorForm.invalid"></button>
   </div>
 </form>

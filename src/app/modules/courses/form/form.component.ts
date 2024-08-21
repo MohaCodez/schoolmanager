@@ -10,27 +10,17 @@ import { CourseService } from '../table/course.service';
 export class FormComponent implements OnInit {
   @Input() course: Course = {
     id: 0,
-    name: '',
-    branch: '',
-    description: '',
-    credits: 0
+    name: null,
+    branch: null,
+    description: null,
+    credits: null
   };
 
   @Output() onClose = new EventEmitter<void>();
 
   constructor(private courseService: CourseService) {}
 
-  ngOnInit(): void {
-    if (!this.course) {
-      this.course = {
-        id: 0,
-        name: '',
-        branch: '',
-        description: '',
-        credits: 0
-      };
-    }
-  }
+  ngOnInit(): void {}
 
   onSubmit(): void {
     if (this.course.id) {

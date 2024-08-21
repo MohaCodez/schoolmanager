@@ -4,21 +4,24 @@
     <div class="p-field">
       <label for="name">Name</label>
       <input id="name" type="text" pInputText [(ngModel)]="student.name" name="name" required>
+      <small *ngIf="studentForm.controls['name']?.invalid && studentForm.controls['name']?.touched" class="p-error">Name is required.</small>
     </div>
 
     <!-- Age Field -->
     <div class="p-field">
       <label for="age">Age</label>
       <input id="age" type="number" pInputText [(ngModel)]="student.age" name="age" required>
+      <small *ngIf="studentForm.controls['age']?.invalid && studentForm.controls['age']?.touched" class="p-error">Age is required.</small>
     </div>
 
     <!-- Branch Field -->
     <div class="p-field">
       <label for="branch">Branch</label>
       <input id="branch" type="text" pInputText [(ngModel)]="student.branch" name="branch" required>
+      <small *ngIf="studentForm.controls['branch']?.invalid && studentForm.controls['branch']?.touched" class="p-error">Branch is required.</small>
     </div>
 
     <!-- Submit Button -->
-    <button type="submit" pButton label="{{ student.id ? 'Update' : 'Add' }}"></button>
+    <button type="submit" pButton label="{{ student.id ? 'Update' : 'Add' }}" [disabled]="studentForm.invalid"></button>
   </div>
 </form>
