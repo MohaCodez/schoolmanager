@@ -14,9 +14,9 @@
     },
     {
       "id": 3,
-      "name": "Manan",
-      "age": 14,
-      "branch": "CS"
+      "name": "Rahul",
+      "age": 25,
+      "branch": "Eco"
     }
   ],
   "professors": [
@@ -79,6 +79,20 @@
       "branch": "Electronics",
       "description": "Analog Digital Verilog Design",
       "credits": 5
+    },
+    {
+      "name": "newCourse",
+      "branch": "CPP",
+      "description": "askjcakwnkawckajaawd",
+      "credits": 5,
+      "id": 5
+    },
+    {
+      "name": "aa",
+      "branch": "ss",
+      "description": "bb",
+      "credits": 3,
+      "id": 6
     }
   ]
 }

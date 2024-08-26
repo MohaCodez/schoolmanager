@@ -9,7 +9,7 @@ import { CourseService } from '../table/course.service';
 })
 export class FormComponent implements OnInit {
   @Input() course: Course = {
-    id: 0,
+    id: undefined,
     name: null,
     branch: null,
     description: null,
@@ -25,14 +25,17 @@ export class FormComponent implements OnInit {
   onSubmit(): void {
     if (this.course.id) {
       this.courseService.updateCourse(this.course)
-        .subscribe(() => {
-          this.onClose.emit();
+        .subscribe({
+          next: () => this.onClose.emit(),
+          error: (err) => console.error('Update failed', err) // Add UI feedback here
         });
     } else {
       this.courseService.addCourse(this.course)
-        .subscribe(() => {
-          this.onClose.emit();
+        .subscribe({
+          next: () => this.onClose.emit(),
+          error: (err) => console.error('Add failed', err) // Add UI feedback here
         });
     }
   }
+  
 }

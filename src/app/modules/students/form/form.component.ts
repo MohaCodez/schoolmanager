@@ -9,7 +9,7 @@ import { StudentService } from '../table/student.service';
 })
 export class FormComponent implements OnInit {
   @Input() student: Student = {
-    id: 0,
+    id: undefined,
     name: null,        // No default value
     age: null,       // No default value
     branch: null        // No default value

@@ -9,7 +9,7 @@ import { ProfessorService } from '../table/professor.service';
 })
 export class FormComponent implements OnInit {
   @Input() professor: Professor = {
-    id: 0,
+    id: undefined,
     name: null,        // No default value
     email: null,       // No default value
     department: null   // No default value
