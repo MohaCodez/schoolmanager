@@ -9,6 +9,8 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
+import { ToastrModule } from 'ngx-toastr'; // Import this
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TableModule,
     ButtonModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxUiLoaderModule,
+    ToastrModule.forRoot(), // Import ToastersModule in app module
   ],
   providers: [],
   bootstrap: [AppComponent]

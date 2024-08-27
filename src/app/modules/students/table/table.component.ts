@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from './student';
 import { StudentService } from './student.service';
+import { ActivatedRoute } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { ToastrService } from 'ngx-toastr'; // Import ToastrService
 
 @Component({
   selector: 'app-students',
@@ -12,15 +15,17 @@ export class StudentsComponent implements OnInit {
   displayDialog: boolean = false;
   selectedStudent: Student | null = null;
 
-  constructor(private studentService: StudentService) { }
+  constructor(
+    private studentService: StudentService, 
+    private route: ActivatedRoute,
+    private ngxLoader: NgxUiLoaderService,
+    private toastr: ToastrService // Inject ToastrService
+  ) { }
   
   ngOnInit(): void {
-    this.getStudents();
-  }
-
-  getStudents(): void {
-    this.studentService.getStudents()
-      .subscribe(students => this.students = students);
+    this.route.data.subscribe(data => {
+      this.students = data['students'];
+    });
   }
 
   showAddDialog(): void {
@@ -39,14 +44,36 @@ export class StudentsComponent implements OnInit {
   }
 
   deleteStudent(id: number): void {
+    this.ngxLoader.start();
     this.studentService.deleteStudent(id)
-      .subscribe(() => {
-        this.students = this.students.filter(student => student.id !== id);
-      });
+      .subscribe(
+        () => {
+          this.refreshStudents();
+          this.toastr.success('Student deleted successfully'); // Success toast
+        },
+        error => {
+          this.toastr.error('Failed to delete student'); // Error toast
+        }
+      );
   }
 
   closeDialog(): void {
     this.displayDialog = false;
-    this.getStudents(); // Optionally refresh the student list after closing the dialog
+    this.refreshStudents();
+  }
+
+  refreshStudents(): void {
+    this.ngxLoader.start();
+    this.studentService.getStudents().subscribe(
+      students => {
+        this.students = students;
+        this.toastr.info('Student list updated'); // Info toast
+        this.ngxLoader.stop();
+      },
+      error => {
+        this.toastr.error('Failed to updated student list'); // Error toast
+        this.ngxLoader.stop();
+      }
+    );
   }
 }

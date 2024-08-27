@@ -17,6 +17,12 @@
       "name": "Rahul",
       "age": 25,
       "branch": "Eco"
+    },
+    {
+      "name": "David",
+      "age": 26,
+      "branch": "Ece",
+      "id": 4
     }
   ],
   "professors": [
@@ -39,16 +45,10 @@
       "department": "ECE"
     },
     {
-      "id": 4,
-      "name": "Alakh Pandey",
-      "email": "alakh@pandey.com",
-      "department": "Physics"
-    },
-    {
-      "id": 5,
-      "name": "Newman",
-      "email": "newman@postman.com",
-      "department": "Post"
+      "name": "Amit",
+      "email": "mohapatra.amit2002@gmail.com",
+      "department": "Physics",
+      "id": 4
     }
   ],
   "courses": [
@@ -79,20 +79,6 @@
       "branch": "Electronics",
       "description": "Analog Digital Verilog Design",
       "credits": 5
-    },
-    {
-      "name": "newCourse",
-      "branch": "CPP",
-      "description": "askjcakwnkawckajaawd",
-      "credits": 5,
-      "id": 5
-    },
-    {
-      "name": "aa",
-      "branch": "ss",
-      "description": "bb",
-      "credits": 3,
-      "id": 6
     }
   ]
 }
