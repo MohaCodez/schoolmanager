@@ -12,7 +12,6 @@ export class ProfessorService {
 
   constructor(private http: HttpClient) { }
 
-  /** GET: get all professors */
   getProfessors(): Observable<Professor[]> {
     return this.http.get<Professor[]>(this.apiUrl)
       .pipe(
@@ -20,7 +19,6 @@ export class ProfessorService {
       );
   }
 
-  /** GET: get professor by id */
   getProfessor(id: number): Observable<Professor> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Professor>(url)
@@ -29,24 +27,16 @@ export class ProfessorService {
       );
   }
 
-  /** POST: add a new professor */
   addProfessor(professor: Professor): Observable<Professor> {
-    // Validate the professor object to ensure no required fields are null
-    if (!professor.name || !professor.email || !professor.department) {
-      return throwError(() => new Error('Invalid professor data: All fields are required'));  // Updated throwError usage
-    }
-
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-
     return this.http.post<Professor>(this.apiUrl, professor, httpOptions)
       .pipe(
         catchError(this.handleError<Professor>('addProfessor'))
       );
   }
 
-  /** DELETE: delete the professor */
   deleteProfessor(id: number): Observable<Professor> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<Professor>(url)
@@ -55,7 +45,6 @@ export class ProfessorService {
       );
   }
 
-  /** PUT: update the professor */
   updateProfessor(professor: Professor): Observable<Professor> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })

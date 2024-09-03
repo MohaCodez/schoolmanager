@@ -1,34 +1,27 @@
 <h2>Professors</h2>
 
-<!-- PrimeNG Table -->
 <p-table [value]="professors">
   <ng-template pTemplate="header">
-      <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Department</th>
-          <th>
-            <button pButton type="button" label="Add Professor" icon="pi pi-plus" (click)="showAddDialog()"></button>
-          </th>
-      </tr>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Department</th>
+      <th>
+        <button pButton type="button" label="Add Professor" icon="pi pi-plus" (click)="showAddDialog()"></button>
+      </th>
+    </tr>
   </ng-template>
   <ng-template pTemplate="body" let-professor>
-      <tr>
-          <td>{{professor.id}}</td>
-          <td>{{professor.name}}</td>
-          <td>{{professor.email}}</td>
-          <td>{{professor.department}}</td>
-          <td>
-              <button pButton type="button" label="Edit" (click)="editProfessor(professor)"></button>
-              <button pButton type="button" label="Delete" class="p-button-danger" (click)="deleteProfessor(professor.id)"></button>
-          </td>
-      </tr>
+    <tr>
+      <td>{{professor.id}}</td>
+      <td>{{professor.name}}</td>
+      <td>{{professor.email}}</td>
+      <td>{{professor.department}}</td>
+      <td>
+        <button pButton type="button" label="Edit" (click)="editProfessor(professor)"></button>
+        <button pButton type="button" label="Delete" class="p-button-danger" (click)="deleteProfessor(professor.id)"></button>
+      </td>
+    </tr>
   </ng-template>
 </p-table>
-
-<p-dialog header="Professor Form" [(visible)]="displayDialog" [modal]="true" [breakpoints]="{'960px': '75vw', '640px': '100vw'}">
-    <ng-container *ngIf="selectedProfessor">
-        <app-professor-form [professor]="selectedProfessor" (onClose)="closeDialog()"></app-professor-form>
-    </ng-container>
-</p-dialog>

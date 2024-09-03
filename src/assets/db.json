@@ -23,6 +23,18 @@
       "age": 26,
       "branch": "ECE",
       "id": 4
+    },
+    {
+      "name": "bran",
+      "age": 15,
+      "branch": null,
+      "id": 5
+    },
+    {
+      "name": "Amit Moha",
+      "age": 15,
+      "branch": null,
+      "id": 6
     }
   ],
   "professors": [
@@ -43,12 +55,6 @@
       "name": "Abhijit Pethe",
       "email": "pethe@bits.com",
       "department": "ECE"
-    },
-    {
-      "name": "Amit",
-      "email": "mohapatra.amit2002@gmail.com",
-      "department": "Physics",
-      "id": 4
     }
   ],
   "courses": [
@@ -79,6 +85,13 @@
       "branch": "Electronics",
       "description": "Analog Digital Verilog Design",
       "credits": 5
+    },
+    {
+      "name": "FPGA",
+      "branch": "EEE",
+      "description": "Sys Design",
+      "credits": 2,
+      "id": 5
     }
   ]
 }

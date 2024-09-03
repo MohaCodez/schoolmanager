@@ -4,6 +4,7 @@ import { Professor } from './professor';
 import { ProfessorService } from './professor.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ToastrService } from 'ngx-toastr'; // Import ToastrService
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-professors',
@@ -19,12 +20,26 @@ export class ProfessorsComponent implements OnInit {
     private route: ActivatedRoute,
     private professorService: ProfessorService,
     private ngxLoader: NgxUiLoaderService,
-    private toastr: ToastrService // Inject ToastrService
+    private toastr: ToastrService, // Inject ToastrService,
+    private router: Router // Inject Router service
+
   ) { }
   
   ngOnInit(): void {
     this.route.data.subscribe(data => {
-      this.professors = data['professors'];
+      const resolvedData = data['professors'];
+
+      if (Array.isArray(resolvedData)) {
+        // Handle the case where data is an array
+        this.professors = resolvedData;
+      } else if (resolvedData) {
+        // Handle the case where a single professor object is returned (although this should not happen for the list route)
+        this.professors = [resolvedData];
+      } else {
+        // Handle the case where data is null
+        this.professors = [];
+        // Optionally, show an error message or notify the user
+      }
     });
   }
 
@@ -36,11 +51,14 @@ export class ProfessorsComponent implements OnInit {
       department: null
     };
     this.displayDialog = true;
+    this.router.navigate(['/professors/add']);
   }
 
   editProfessor(professor: Professor): void {
     this.selectedProfessor = { ...professor };
     this.displayDialog = true;
+    this.router.navigate(['/professors/edit', professor.id]); // Navigate to edit form
+
   }
 
   deleteProfessor(id: number): void {
@@ -71,7 +89,7 @@ export class ProfessorsComponent implements OnInit {
         this.ngxLoader.stop();
       },
       error => {
-        this.toastr.error('Failed to updated professor list'); // Error toast
+        this.toastr.error('Failed to update professor list'); // Error toast
         this.ngxLoader.stop();
       }
     );
