@@ -17,7 +17,7 @@
     <!-- Branch Field -->
     <div class="p-field">
       <label for="branch">Branch</label>
-      <input id="branch" type="text" pInputText [(ngModel)]="student.branch" name="branch" required>
+      <input id="branch" type="text" pInputText [(ngModel)]="student.branch" name="branch">
       <small *ngIf="studentForm.controls['branch']?.invalid && studentForm.controls['branch']?.touched" class="p-error">Branch is required.</small>
     </div>
 

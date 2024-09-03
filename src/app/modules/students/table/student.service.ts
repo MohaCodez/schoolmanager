@@ -32,7 +32,7 @@ export class StudentService {
   /** POST: add a new student */
   addStudent(student: Student): Observable<Student> {
     // Validate the student object to ensure no required fields are null
-    if (!student.name || !student.age || !student.branch) {
+    if (!student.name || !student.age) {
       return throwError(() => new Error('Invalid student data: All fields are required'));
     }
 

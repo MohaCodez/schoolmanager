@@ -8,10 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { TableModule } from 'primeng/table';
+import { HighlightNADirective } from '../../highlight-na.directive';
 
 @NgModule({
   declarations: [
     StudentsComponent,
+    HighlightNADirective,
     FormComponent
   ],
   imports: [

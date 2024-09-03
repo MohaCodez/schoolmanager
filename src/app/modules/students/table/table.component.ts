@@ -58,6 +58,17 @@ export class StudentsComponent implements OnInit {
   }
 
   closeDialog(): void {
+    if (this.selectedStudent && this.selectedStudent.id) {
+      this.studentService.updateStudent(this.selectedStudent).subscribe(
+        () => {
+          this.refreshStudents();
+          this.toastr.success(`"${this.selectedStudent?.name}" student info updated`);
+        },
+        error => {
+          this.toastr.error('Failed to update student info');
+        }
+      );
+    }
     this.displayDialog = false;
     this.refreshStudents();
   }

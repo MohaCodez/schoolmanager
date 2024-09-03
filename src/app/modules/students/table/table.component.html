@@ -16,9 +16,12 @@
   <ng-template pTemplate="body" let-student>
       <tr>
           <td>{{student.id}}</td>
-          <td>{{student.name}}</td>
+          <td>{{student.name | titlecase}}</td>
           <td>{{student.age}}</td>
-          <td>{{student.branch}}</td>
+          <td [appHighlightNA]="student.branch ? student.branch : 'N/A'">
+            {{ student.branch ? student.branch : 'N/A' }}
+          </td>
+          
           <td>
               <button pButton type="button" label="Edit" (click)="editStudent(student)"></button>
               <button pButton type="button" label="Delete" class="p-button-danger" (click)="deleteStudent(student.id)"></button>
